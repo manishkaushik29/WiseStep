@@ -5,7 +5,7 @@ from sqlalchemy import create_engine, MetaData, Table
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 
-DB_CONN = "postgresql://postgres:0510@127.0.0.1:5433/WBS"
+DB_CONN = "postgresql://postgres:0510@127.0.0.1:5433/wisestep"
 
 #SQLALCHEMY_DATABASE_URL = os.getenv(DB_CONN)
 
