@@ -1,0 +1,17 @@
+CREATE TABLE public.customer_details
+(
+    s_no integer NOT NULL,
+    rec_no integer NOT NULL,
+    address character varying(50) COLLATE pg_catalog."default" NOT NULL,
+    type_of_membership character varying(50) COLLATE pg_catalog."default" NOT NULL,
+    documents boolean NOT NULL,
+    user_agreement boolean NOT NULL,
+    account_no integer NOT NULL,
+    name_of_user character varying(50) COLLATE pg_catalog."default" NOT NULL,
+    phone_no bigint NOT NULL,
+    dob date NOT NULL,
+    email character varying(50) COLLATE pg_catalog."default",
+    gender character varying(20) COLLATE pg_catalog."default" NOT NULL,
+    account_creation_date date NOT NULL,
+    CONSTRAINT customer_details_email_key UNIQUE (email)
+)
