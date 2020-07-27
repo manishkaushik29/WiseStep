@@ -1,0 +1,12 @@
+#schema of customer financial details table
+Create TABLE Financial_details
+(   Total_amount bigint NOT NULL ,
+    No_of_shares integer NOT NULL,
+    RD_amount bigint  NOT NULL,
+   Purchase_date DATE NOT NULL,
+    Interest_rate bigint NOT NULL,
+    Account_No integer NOT NULL,
+    CONSTRAINT fk_account_no
+      FOREIGN KEY(Account_No)
+     REFERENCES account_details(Account_No)
+);
