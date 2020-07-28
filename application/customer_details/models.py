@@ -1,6 +1,8 @@
 
-from sqlalchemy import Column, Integer, String, BigInteger,Boolean,Date
-from application.fetch_data_based_on_acc_no.database import Base
+from sqlalchemy import Column, Integer, String, BigInteger,Boolean,Date,ForeignKey,Float,Numeric
+from sqlalchemy.orm import relationship
+
+from application.customer_details.database import Base
 
 class CustomerDetails(Base):
     __tablename__ = "customer_details"
@@ -18,3 +20,5 @@ class CustomerDetails(Base):
     dob=Column(Date())
     gender=Column(String(20))
     account_creation_date=Column(Date())
+
+
