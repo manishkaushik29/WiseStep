@@ -5,7 +5,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from sqlalchemy.orm import Session
 
 import models, schemas
-from application.add_customer_to_db.database import  SessionLocal, engine
+from application.customer_details.database import  SessionLocal, engine
 
 models.Base.metadata.create_all(bind=engine)
 app = FastAPI()
@@ -37,20 +37,6 @@ def create_customer_item(db: Session, item: schemas.CustomerCreate):
         return db_item
     except Exception as e:
         print("exception is :", e)
-
-
-
-
-# @app.get("/")
-# def main():
-#     return RedirectResponse(url="/docs/")
-#
-#
-# @app.get("/details/", response_model=List[schemas.CustomerDetails])
-# #@app.get("/details/")
-# def show_records(db: Session = Depends(get_db)):
-#     records = db.query(models.CustomerDetails).all()
-#     return records
 
 
 

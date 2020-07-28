@@ -1,7 +1,7 @@
 
 from sqlalchemy import Column, Integer, String, BigInteger, Boolean, Date
 
-from application.add_customer_to_db.database import Base
+from application.customer_details.database import Base
 
 class CustomerDetails(Base):
     __tablename__ = "customer_details"
