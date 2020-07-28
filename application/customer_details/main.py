@@ -1,12 +1,14 @@
 import uvicorn
+from typing import List
 
 from fastapi import Depends, FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from sqlalchemy.orm import Session
 from starlette.responses import RedirectResponse
+from fastapi.encoders import jsonable_encoder
 
-from application.fetch_data_based_on_acc_no import models, schemas
-from application.fetch_data_based_on_acc_no.database import SessionLocal, engine
+from application.customer_details import models, schemas
+from application.customer_details.database import SessionLocal, engine
 models.Base.metadata.create_all(bind=engine)
 app = FastAPI()
 
@@ -34,9 +36,11 @@ def create_customer_item(db: Session, item: schemas.CustomerCreate):
     except Exception as e:
         print("exception is :", e)
 
+
 @app.get("/")
 def main():
     return RedirectResponse(url="/docs/")
+
 
 
 
@@ -44,6 +48,10 @@ def main():
 def read_items(acc:int,db: Session = Depends(get_db)):
     records=db.query(models.CustomerDetails).filter(models.CustomerDetails.account_no == acc).first()
     return records
+
+
+
+
 
 
 
