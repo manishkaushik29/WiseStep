@@ -22,3 +22,4 @@ class CustomerDetails(Base):
     account_creation_date=Column(Date())
 
 
+

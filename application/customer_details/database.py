@@ -13,11 +13,14 @@ try:
     SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
     print("connection successful")
 
+
+
 except Exception as err:
     #print(e.with_traceback())
     err_type, err_obj, traceback = sys.exc_info()
     print(traceback.tb_lineno)
     print(err)
+
 
 
 Base = declarative_base()

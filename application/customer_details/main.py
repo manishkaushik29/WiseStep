@@ -9,6 +9,7 @@ from fastapi.encoders import jsonable_encoder
 
 from application.customer_details import models, schemas
 from application.customer_details.database import SessionLocal, engine
+
 models.Base.metadata.create_all(bind=engine)
 app = FastAPI()
 
@@ -19,12 +20,14 @@ app.add_middleware(
     allow_headers=["*"],
     allow_credentials=True,
 )
+
 def get_db():
     try:
         db = SessionLocal()
         yield db
     finally:
         db.close()
+
 
 def create_customer_item(db: Session, item: schemas.CustomerCreate):
     try:
@@ -52,9 +55,18 @@ def read_items(acc:int,db: Session = Depends(get_db)):
 
 
 
+@app.post("/customer/")
+def create_item_for_user(
+    item: schemas.CustomerCreate, db: Session = Depends(get_db)
+):
+    return create_customer_item(db=db, item=item)
+
 
 
 
 
 if __name__ == "__main__":
-    uvicorn.run(app, host="127.0.0.1", port=8001, debug=True)
+  uvicorn.run(app, host="127.0.0.1", port=8001, debug=True)
+
+
+
