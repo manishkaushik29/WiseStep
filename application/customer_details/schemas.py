@@ -17,9 +17,7 @@ class CustomerDetails(BaseModel):
     email:str
     gender:str
     account_creation_date:date
-
-
-
+    
     class Config:
         orm_mode = True
 
@@ -29,5 +27,4 @@ class CustomerCreate(CustomerDetails):
 
     class Config:
         orm_mode = True
-
 
