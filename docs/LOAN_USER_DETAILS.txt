@@ -1,0 +1,9 @@
+CREATE TABLE LOAN_USERS
+(
+    account_no integer  references customer_details(account_no) NOT NULL ,
+    Loan_amount decimal NOT NULL,
+    Loan_status character varying(50)  NOT NULL,
+    Loan_Duration Date  NOT NULL,
+    Guarantee_Details character varying(50)  NOT NULL,
+    Interest_rate Decimal NOT NULL
+)

@@ -1,7 +1,7 @@
 
+
 from sqlalchemy import Column, Integer, String, BigInteger,Boolean,Date,ForeignKey,Float,Numeric
 from sqlalchemy.orm import relationship
-
 from application.customer_details.database import Base
 
 class CustomerDetails(Base):
@@ -20,5 +20,6 @@ class CustomerDetails(Base):
     dob=Column(Date())
     gender=Column(String(20))
     account_creation_date=Column(Date())
+
 
 
