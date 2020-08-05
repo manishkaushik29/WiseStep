@@ -39,31 +39,12 @@ def create_customer_item(db: Session, item: schemas.CustomerCreate):
     except Exception as e:
         print("exception is :", e)
 
-
-@app.get("/")
-def main():
-    return RedirectResponse(url="/docs/")
-
-
-
-
-@app.get("/details/")
-def read_items(acc:int,db: Session = Depends(get_db)):
-    records=db.query(models.CustomerDetails).filter(models.CustomerDetails.account_no == acc).first()
-    return records
-
-
-
-
-@app.post("/customer/")
-def create_item_for_user(
-    item: schemas.CustomerCreate, db: Session = Depends(get_db)
-):
-    return create_customer_item(db=db, item=item)
-
-
-
-
+@app.put("/customer/{rec_no}", response_model=schemas.CustomerDetails)
+def update_item(rec_no: int, item: schemas.CustomerDetails, db: Session = Depends(get_db)):
+    update_item_encoded = jsonable_encoder(item)
+    db.query(models.customerdetails).filter(models.customerdetails.rec_no==rec_no).update(dict(update_item_encoded))
+    db.commit()
+    return update_item_encoded
 
 if __name__ == "__main__":
   uvicorn.run(app, host="127.0.0.1", port=8001, debug=True)
